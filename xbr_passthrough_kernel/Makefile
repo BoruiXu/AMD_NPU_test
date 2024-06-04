@@ -8,10 +8,10 @@
 
 srcdir := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
-include ${srcdir}/../../makefile-common
+include ${srcdir}/../../../makefile-common
 
 targetname = passThroughKernel
-VPATH := ${srcdir}/../../../aie_kernels/generic
+VPATH := ${srcdir}/../../../../aie_kernels/generic
 data_size = 1000000000
 trace_size = 8192
 PASSTHROUGH_SIZE = ${data_size}

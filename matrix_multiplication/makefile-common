@@ -32,7 +32,7 @@ srcdir := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 current_dir := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 #include ${current_dir}../../makefile-common
 SELF_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
-include ${current_dir}../../makefile-common
+include ${current_dir}../../../makefile-common
 
 # defaults; overwrite if needed
 M?=512	
@@ -47,7 +47,7 @@ insts_target?=build/insts_${M}x${K}x${N}.txt
 
 runargs?=-v 1 --warmup 10 --iters 10 --verify 0 
 
-kernels_dir=${srcdir}/../../../../aie_kernels/aie2
+kernels_dir=${srcdir}/../../../../../aie_kernels/aie2
 
 .PHONY: all
 all: ${xclbin_target} ${insts_target} ${targetname}.exe
