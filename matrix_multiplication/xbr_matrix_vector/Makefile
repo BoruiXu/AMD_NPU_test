@@ -12,8 +12,8 @@ kernels=mv
 
 # Currently does not accept reconfiguring size via these variables; must change
 # in source at aie2.py as well as here
-M=2048
-K=2048
+M=4096
+K=4096
 N=1
 
 SELF_DIR := $(dir $(lastword $(MAKEFILE_LIST)))

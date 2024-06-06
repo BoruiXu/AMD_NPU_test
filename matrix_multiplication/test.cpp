@@ -133,13 +133,15 @@ int main(int argc, const char *argv[]) {
   A_DATATYPE *bufA = bo_a.map<A_DATATYPE *>();
   std::vector<A_DATATYPE> AVec(A_VOLUME);
   for (int i = 0; i < A_VOLUME; i++) {
-    AVec[i] = matmul_common::random_bfloat16_t();
+    //AVec[i] = matmul_common::random_bfloat16_t();
+    AVec[i] = (std::bfloat16_t)(i/4096+1);
   }
   memcpy(bufA, AVec.data(), (AVec.size() * sizeof(A_DATATYPE)));
   B_DATATYPE *bufB = bo_b.map<B_DATATYPE *>();
   std::vector<B_DATATYPE> BVec(B_VOLUME);
   for (int i = 0; i < B_VOLUME; i++) {
-    BVec[i] = matmul_common::random_bfloat16_t();
+    //BVec[i] = matmul_common::random_bfloat16_t();
+    BVec[i] = (std::bfloat16_t)1; 
   }
   memcpy(bufB, BVec.data(), (BVec.size() * sizeof(B_DATATYPE)));
 
@@ -186,6 +188,10 @@ int main(int argc, const char *argv[]) {
     }
 
     memcpy(CVec.data(), bufOut, (CVec.size() * sizeof(C_DATATYPE)));
+    for(int i =0;i<5;i++){
+        std::cout<<CVec[i]<<" ";
+    }
+    std::cout<<std::endl;
     if (do_verify) {
       if (verbosity >= 1) {
         std::cout << "Verifying against reference matmul ..." << std::endl;

@@ -15,12 +15,12 @@ from aie.dialects.scf import *
 def my_matmul(M = 288, K = 288):
     #M = 288
     #K = 288
-    m = 32
-    k = 32
+    m = 64
+    k = 64
     word_size_in = 2
     word_size_out = 4
 
-    n_cores = 1
+    n_cores = 4
 
     A_sz_in_i32s = M * K * word_size_in // 4
     B_sz_in_i32s = K * word_size_in // 4
@@ -103,7 +103,7 @@ def my_matmul(M = 288, K = 288):
                     2,
                     memRef_A_ty,
                     [
-                        (k // 2 // 2, 2),
+                        (k//2 , 2),
                         (m, k),
                         (2, 1),
                     ],  # transpose at 4-byte (2xbf16) granularity

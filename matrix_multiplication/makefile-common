@@ -45,9 +45,9 @@ mlir_target?=build/aie_${M}x${K}x${N}.mlir
 xclbin_target?=build/final_${M}x${K}x${N}.xclbin
 insts_target?=build/insts_${M}x${K}x${N}.txt
 
-runargs?=-v 1 --warmup 10 --iters 10 --verify 0 
+runargs?=-v 1 --warmup 10 --iters 10 #--verify 0 
 
-kernels_dir=${srcdir}/../../../../../aie_kernels/aie2
+kernels_dir?=${srcdir}/../../../../../aie_kernels/aie2
 
 .PHONY: all
 all: ${xclbin_target} ${insts_target} ${targetname}.exe
